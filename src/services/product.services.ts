@@ -5,3 +5,8 @@ export async function addProduct(product: IProduct) {
   const result = await productModel.addProduct(product);
   return result;
 }
+
+export async function getAllProducts() {
+  const result = await productModel.getAllProducts();
+  return result;
+}

@@ -12,3 +12,9 @@ export async function addProduct(product: IProduct): Promise<IProduct> {
   const newProduct: IProduct = { ...product, id };
   return newProduct;
 }
+
+export async function getAllProducts(): Promise<IProduct[]> {
+  const query = 'SELECT * FROM Trybesmith.Products';
+  const [result] = await connection.execute(query);
+  return result as IProduct[];
+}
