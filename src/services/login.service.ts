@@ -1,6 +1,6 @@
 import ILogin from '../interfaces/login.interface';
 import loginModel from '../models/login.model';
-import * as jwt from './jwt.service';
+import * as jwtService from './jwt.service';
 
 export default async function loginService(user: ILogin) {
   const searchUser = await loginModel(user);
@@ -8,6 +8,6 @@ export default async function loginService(user: ILogin) {
     return 'User not found';
   }
 
-  const token = jwt.newToken(searchUser);
+  const token = jwtService.newToken(searchUser);
   return token;
 }

@@ -1,4 +1,5 @@
 import * as orderModel from '../models/order.model';
+import * as jwtService from './jwt.service';
 
 export async function getAllOrders() {
   const orders = await orderModel.getAllOrders();
@@ -7,4 +8,9 @@ export async function getAllOrders() {
   return orders.map(({ id, userId }, index) => ({ id, userId, productsIds: products[index] }));
 }
 
-export const wait = 'wait';
+export async function createOrder(productsIds: number[], token: string) {
+  const userId = jwtService.getIdFromToken(token as string);
+  const data = await orderModel.createOrder(userId, productsIds);
+  
+  return data;
+}

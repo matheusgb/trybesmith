@@ -11,4 +11,13 @@ export async function getAllOrders(_req: Request, res: Response) {
   }
 }
 
-export const wait = 'wait';
+export async function createOrder(req: Request, res: Response) {
+  try {
+    const { productsIds } = req.body;
+    const { authorization } = req.headers;
+    const data = await orderService.createOrder(productsIds, authorization as string);
+    res.status(httpStatus.CREATED).json(data);
+  } catch (error) {
+    res.status(httpStatus.INTERNAL_SERVER_ERROR).json(error);
+  }
+}
