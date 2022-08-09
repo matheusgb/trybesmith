@@ -6,7 +6,8 @@ dotenv.config();
 const secret = process.env.JWT_SECRET || 'secret';
 
 export function newToken(user: object) {
-  return jwt.sign(user, secret, { expiresIn: '1h' });
+  const token = jwt.sign(user, secret, { expiresIn: '1h' });
+  return token;
 }
 
 export function verifyToken(token: string) {
