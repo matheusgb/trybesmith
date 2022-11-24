@@ -29,6 +29,8 @@ services:
       - 33060:33060
     environment:
       MYSQL_ROOT_PASSWORD: password
+    volumes:
+      - ./Trybesmith.sql:/docker-entrypoint-initdb.d/Trybesmith.sql
 
 networks:
   default:
