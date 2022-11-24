@@ -6,7 +6,7 @@ services:
     container_name: trybesmith
     tty: true
     stdin_open: true
-    command: bash
+    command: bash -c "npm i && npm run dev"
     restart: always
     working_dir: /app
     volumes:
