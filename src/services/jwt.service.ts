@@ -12,7 +12,6 @@ export function newToken(user: object) {
 
 export function validateToken(token: string) {
   const validToken = token.split(' ')[1];
-  console.log(validToken);
   try {
     const { data } = jwt.verify(validToken, secret as string) as { data: string };
     return data;
@@ -24,7 +23,6 @@ export function validateToken(token: string) {
 
 export function getIdFromToken(token: string) {
   const validToken = token.split(' ')[1];
-  console.log(validToken);
   const { id } = jwt.verify(validToken, secret as string) as { id: number };
   return id;
 }
