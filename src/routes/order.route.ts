@@ -5,7 +5,7 @@ import validateProductsIds from '../middlewares/order.middleware';
 
 const orderRoute = Router();
 
-orderRoute.post('/', validateToken, validateProductsIds, orderController.createOrder);
+orderRoute.post('/', validateProductsIds, validateToken, orderController.createOrder);
 orderRoute.get('/', orderController.getAllOrders);
 
 export default orderRoute;
